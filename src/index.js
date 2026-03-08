@@ -13,8 +13,9 @@ app.use(cors());
 app.use(express.json({}));
 app.use("/api/auth", AuthRoutes);
 app.use("/api/books", BookRoutes);
-connectToDb().then(() => {
-  app.listen(port, () => {
-    console.log("server running on port", port);
+
+app.listen(port, () => {
+  connectToDb().then(() => {
+    console.log("Connected to db");
   });
 });

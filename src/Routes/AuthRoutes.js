@@ -77,7 +77,7 @@ Router.post("/register", async (req, res) => {
       const token = jwt.sign({ user }, process.env.SECRET_KEY, {
         expiresIn: "15d",
       });
-      res.status(200).json({
+      return res.status(200).json({
         token: token,
         user: {
           id: user._id,

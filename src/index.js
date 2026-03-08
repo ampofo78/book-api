@@ -12,9 +12,7 @@ app.use(cors());
 app.use(express.json({}));
 app.use("/api/auth", AuthRoutes);
 app.use("/api/books", BookRoutes);
-if (process.env.NODE_ENV === "production") {
-  job.start();
-}
+if (process.env.NODE_ENV === "production") job.start();
 app.listen(port, () => {
   connectToDb();
 });

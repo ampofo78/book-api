@@ -4,7 +4,7 @@ import https from "https";
 
 const job = new cron.CronJob("*/5 * * * *", function () {
   https
-    .get("https://booking-upqx.onrender.com/api/auth/health", (res) => {
+    .get(process.env.API_URL, (res) => {
       if (res.statusCode === 200) console.log("GET request sent successfully");
       else console.log("GET request failed", res.statusCode);
     })

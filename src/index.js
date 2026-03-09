@@ -6,7 +6,7 @@ import AuthRoutes from "./Routes/AuthRoutes.js";
 import BookRoutes from "./Routes/BookRoutes.js";
 
 const app = express();
-//if (process.env.NODE_ENV === "production") job.start();
+if (process.env.NODE_ENV === "production") job.start();
 const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json({}));

@@ -3,9 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../Models/User.js";
 //import { hashPassword } from "../HashPassword.js";
 const Router = express.Router();
-Router.get("/health", (req, res) => {
-  return res.status(200).send("cron done successffully");
-});
+
 Router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {

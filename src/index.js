@@ -12,7 +12,9 @@ app.use(cors());
 app.use(express.json({}));
 app.use("/api/auth", AuthRoutes);
 app.use("/api/books", BookRoutes);
-
+app.get("/api/health", (req, res) => {
+  return res.status(200).json({ status: "ok" });
+});
 app.listen(port, () => {
   connectToDb().then(() => {
     console.log("Connected to db");

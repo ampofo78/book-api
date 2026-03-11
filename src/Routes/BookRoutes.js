@@ -9,7 +9,7 @@ Router.post("/", VerifyToken, async (req, res) => {
   const { title, caption, image, rating } = req.body;
 
   try {
-    if (!rating || !image || !caption || title)
+    if (!rating || !image || !caption || !title)
       return res.status(400).json({ message: "All fields required" });
     const result = await cloudinary.uploader.upload(image, {
       resource_type: "image",

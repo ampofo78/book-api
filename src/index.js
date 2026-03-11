@@ -9,7 +9,17 @@ const app = express();
 if (process.env.NODE_ENV === "production") job.start();
 const port = process.env.PORT || 3000;
 app.use(cors());
-app.use(express.json({}));
+app.use(
+  express.json({
+    limit: "50MB",
+  }),
+);
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: "50MB",
+  }),
+);
 app.use("/api/auth", AuthRoutes);
 app.use("/api/books", BookRoutes);
 app.get("/api/health", (req, res) => {

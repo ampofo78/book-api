@@ -6,24 +6,18 @@ import Book from "../Models/Book.js";
 const Router = express.Router();
 
 Router.post("/", VerifyToken, async (req, res) => {
-  const { title, caption, image, rating } = req.body;
+  const { title, caption, imageUrl, rating, imagePublicId } = req.body;
 
   try {
-    if (!rating || !image || !caption || !title)
+    if (!rating || !imageUrl || !caption || !title)
       return res.status(400).json({ message: "All fields required" });
-    const result = await cloudinary.uploader.upload(image, {
-      resource_type: "image",
-    });
-
-    const ImageUrl = result.secure_url;
-    const ImagepublicId = result.public_id;
 
     const book = new Book({
       title: title,
       rating: rating,
       caption: caption,
-      image: ImageUrl,
-      imagePublicId: ImagepublicId,
+      image: imageUrl,
+      imagePublicId: imagePublicId,
       user: req.user._id,
     });
     await book.save();

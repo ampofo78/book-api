@@ -18,7 +18,7 @@ Router.post("/", VerifyToken, async (req, res) => {
       caption: caption,
       image: imageUrl,
       imagePublicId: imagePublicId,
-      user: req.user._id,
+      user: req.user.user._id,
     });
 
     await book.save();

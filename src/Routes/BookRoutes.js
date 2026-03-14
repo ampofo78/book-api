@@ -20,8 +20,10 @@ Router.post("/", VerifyToken, async (req, res) => {
       imagePublicId: imagePublicId,
       user: req.user._id,
     });
+
     await book.save();
-    return res.status(201).json({
+
+    return res.status(200).json({
       book: {
         title: book.title,
         rating: book.rating,
@@ -30,7 +32,9 @@ Router.post("/", VerifyToken, async (req, res) => {
         imagePublicId: book.imagePublicId,
       },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 Router.get("/", VerifyToken, async (req, res) => {

@@ -39,7 +39,8 @@ Router.post("/", VerifyToken, async (req, res) => {
 
 Router.get("/", VerifyToken, async (req, res) => {
   // skip = page * limit
-  const { page, limit } = req.query;
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 2;
   const skip = (page - 1) * limit;
   try {
     const books = await Book.find()
